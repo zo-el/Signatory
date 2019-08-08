@@ -15,6 +15,11 @@ A HC-DNA to sign any values
 
 - ### Sign:
     - Use this tab to Sign a message with a Key
+    
+    
+![Sign-Message](/doc/sign-message.png)
 
 - ### Create Key from seed:
     - Use this tab to create a Key derived from a seed
+
+![Derive-Keys](/doc/derive-key.png)
