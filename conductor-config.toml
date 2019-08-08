@@ -1,0 +1,58 @@
+bridges = []
+persistence_dir = "./tmp/persistence-signatory"
+
+[[agents]]
+id = "agent-id"
+name = "Agent"
+keystore_file = "agent.key"
+public_address = "HcSCJy6gGntzgr95qrpddfqNPGp48mw36pq6m3333pDo8M8kPcmW89TdUM8iwmz"
+
+
+[[dnas]]
+file = "./dist/Signatory.dna.json"
+hash = "QmZuv66i191GZYvGqrk1Ym7jhp4a4J6YxPWscfQC13HfFN"
+id = "signatory"
+
+[[instances]]
+agent = "agent-id"
+dna = "signatory"
+id = "signatory_id"
+[instances.storage]
+path = "./tmp/storage-signatory"
+type = "file"
+
+[[interfaces]]
+admin = false
+id = "ws interface"
+
+    [interfaces.driver]
+    port = 8800
+    type = "websocket"
+    [[interfaces.instances]]
+    id = "signatory_id"
+
+# -----------  UI  -----------
+[[ui_bundles]]
+id = "main"
+root_dir = "ui"
+hash = "Qmjk0"
+
+[[ui_interfaces]]
+id = "ui-interface"
+bundle = "main"
+port = 9300
+dna_interface = "ws interface"
+
+[logger]
+type = "debug"
+[[logger.rules.rules]]
+color = "red"
+exclude = false
+pattern = "^err/"
+[[logger.rules.rules]]
+color = "green"
+exclude = false
+pattern = "^debug/dna"
+[[logger.rules.rules]]
+exclude = true
+pattern = ".*"

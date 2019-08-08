@@ -4,3 +4,4 @@ target/
 .hc
 .cargo
 Cargo.lock
+tmp
