@@ -1,0 +1,14 @@
+{
+  "steps": [
+    {
+      "command": "cargo",
+      "arguments": [
+        "build",
+        "--release",
+        "--target=wasm32-unknown-unknown",
+        "--target-dir=/home/zo-el/nix-holochain/signatory/target"
+      ]
+    }
+  ],
+  "artifact": "/home/zo-el/nix-holochain/signatory/target/wasm32-unknown-unknown/release/signatory.wasm"
+}
