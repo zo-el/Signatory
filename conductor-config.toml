@@ -5,12 +5,12 @@ persistence_dir = "./tmp/persistence-signatory"
 id = "agent-id"
 name = "Agent"
 keystore_file = "agent.key"
-public_address = "HcSCJy6gGntzgr95qrpddfqNPGp48mw36pq6m3333pDo8M8kPcmW89TdUM8iwmz"
+public_address = "HcSCIgvyd46Q4d9xa4gesx8j5tE7crna8m9U4Z63yzmf5aob6t3mKTNIp8mp8fi"
 
 
 [[dnas]]
 file = "./dist/Signatory.dna.json"
-hash = "QmZuv66i191GZYvGqrk1Ym7jhp4a4J6YxPWscfQC13HfFN"
+hash = "QmYeDnNwFvFyWuY4WjKycAVUMEfoQvQscTaNYgaWssHtQF"
 id = "signatory"
 
 [[instances]]

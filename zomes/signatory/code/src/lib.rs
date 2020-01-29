@@ -8,15 +8,14 @@ extern crate holochain_json_derive;
 
 use hdk::{
     error::ZomeApiResult,
-};
-use hdk::holochain_core_types::{
-    signature::Signature,
+    holochain_core_types::{agent::AgentId, signature::Signature, validation::EntryValidationData},
+    holochain_json_api::{
+        error::JsonError,
+        json::{JsonString, RawString},
+    },
+    holochain_persistence_api::{cas::content::Address, hash::HashString},
 };
 
-use hdk::holochain_json_api::{
-    error::JsonError,
-    json::JsonString,
-};
 
 use hdk::holochain_wasm_utils::api_serialization::{
         keystore::{
@@ -42,7 +41,23 @@ pub fn handle_get_all_keys() -> ZomeApiResult<KeystoreListResult> {
 define_zome! {
     entries: []
 
-    genesis: || { Ok(()) }
+    init: || {
+        Ok(())
+    }
+
+    validate_agent: |validation_data : EntryValidationData::<AgentId>| {{
+         if let EntryValidationData::Create{entry, ..} = validation_data {
+             let agent = entry as AgentId;
+             if agent.nick == "reject_agent::app" {
+                 Err("This agent will always be rejected".into())
+             } else {
+                 Ok(())
+             }
+         } else {
+             Err("Cannot update or delete an agent at this time".into())
+         }
+     }}
+
 
     functions: [
         sign: {
